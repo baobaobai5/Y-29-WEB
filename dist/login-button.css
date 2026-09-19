@@ -1,8 +1,8 @@
 /* Adapted from Uiverse.io by MuhammadHasann. Compact header variant. */
 .login-pill.login-sparkle{--active:0;--black-700:hsl(0 0% 12%);--border_radius:9999px;--transition:.3s ease-in-out;position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:0 0 100px;width:100px;height:40px;padding:0 18px;border:0;border-radius:var(--border_radius);background:transparent;color:white;transform-origin:center;transform:scale(calc(1 + var(--active)*.1));transition:transform var(--transition);font-size:14px;font-weight:500;white-space:nowrap}
 .login-sparkle::before,.login-sparkle::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none}
-.login-sparkle::before{z-index:0;background:var(--black-700);box-shadow:inset 0 .5px white,inset 0 -1px 2px black,0 4px 10px -4px hsl(0 0% 0% / calc(1 - var(--active))),0 0 0 calc(var(--active)*6px) hsl(260 97% 50% / .75);transition:box-shadow var(--transition)}
-.login-sparkle::after{z-index:1;background-color:hsl(260 97% 61% / .75);background-image:radial-gradient(at 51% 89%,hsl(266 45% 74%) 0,transparent 50%),radial-gradient(at 100% 100%,hsl(266 36% 60%) 0,transparent 50%),radial-gradient(at 22% 91%,hsl(266 36% 60%) 0,transparent 50%);opacity:var(--active);transition:opacity var(--transition)}
+.login-sparkle::before{z-index:0;background:var(--black-700);box-shadow:inset 0 .5px white,inset 0 -1px 2px black,0 4px 10px -4px hsl(0 0% 0% / calc(1 - var(--active))),0 0 0 calc(var(--active)*6px) color-mix(in srgb,var(--accent) 45%,transparent);transition:box-shadow var(--transition)}
+.login-sparkle::after{z-index:1;background-color:var(--accent);background-image:radial-gradient(at 51% 89%,#ffc093 0,transparent 50%),radial-gradient(at 100% 100%,#f58b46 0,transparent 50%),radial-gradient(at 22% 91%,#f58b46 0,transparent 50%);opacity:var(--active);transition:opacity var(--transition)}
 .login-sparkle:is(:hover,:focus-visible){--active:1;color:white}
 .login-pill.login-sparkle:active{transform:scale(1)}
 .login-sparkle .dots_border{position:absolute;inset:-1px;overflow:hidden;border-radius:inherit;z-index:-1;pointer-events:none}
