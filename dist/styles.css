@@ -10,3 +10,9 @@
 
 .vip{flex-shrink:0;width:56px;height:56px;padding:0;line-height:0}
 .vip img{display:block;width:100%;height:100%;object-fit:contain}
+
+.vip{position:relative}
+.vip .vip-animated{position:absolute;inset:0;opacity:0;pointer-events:none}
+.vip:is(:hover,:focus-visible) .vip-static{opacity:0}
+.vip:is(:hover,:focus-visible) .vip-animated{opacity:1}
+@media(prefers-reduced-motion:reduce){.vip:is(:hover,:focus-visible) .vip-static{opacity:1}.vip:is(:hover,:focus-visible) .vip-animated{opacity:0}}
