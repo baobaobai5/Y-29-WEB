@@ -5,3 +5,5 @@
 
 /* Keep the six homepage catalog panels within the centered 1400px safe area. */
 .home-content>.catalog-section{width:100%;max-width:1400px;margin-inline:auto}
+
+.history .history-icon{display:block;width:24px;height:24px;margin:0 auto 3px}
