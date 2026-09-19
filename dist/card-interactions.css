@@ -1,0 +1,32 @@
+/* Shared media-card interaction: same focus, tint, zoom and playback cue. */
+:root{--card-hover-accent:#ff8b50;--card-hover-time:220ms;--card-hover-ease:cubic-bezier(.2,.65,.3,1)}
+.movie-card .poster,.hero-thumb .hero-poster,.card-media{position:relative;overflow:hidden;border-radius:10px;isolation:isolate;transition:box-shadow var(--card-hover-time) var(--card-hover-ease)}
+.card-media{flex-shrink:0;background:#282a2e}
+.rank-item .card-media{width:90px;height:120px}
+.related-card .card-media{width:96px;height:130px}
+.card-media img{display:block;width:100%;height:100%;object-fit:cover;border-radius:0}
+.movie-card .poster img,.hero-thumb .hero-poster img,.card-media img{transition:transform var(--card-hover-time) var(--card-hover-ease),filter var(--card-hover-time) var(--card-hover-ease);transform:scale(1);transform-origin:center}
+.movie-card .hover-play,.hero-thumb .hover-play,.card-media .hover-play{display:grid;place-items:center;position:absolute;left:50%;top:50%;width:44px;height:44px;z-index:3;border-radius:50%;background:#ff7231eb;box-shadow:0 4px 18px #0006,0 0 0 1px #ffffff59;color:white;font-size:0;opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(.9);transition:opacity var(--card-hover-time) var(--card-hover-ease),transform var(--card-hover-time) var(--card-hover-ease)}
+.hover-play::after{content:"";width:0;height:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:12px solid #fff;margin-left:3px}
+.hero-thumb .hover-play{width:36px;height:36px}
+.hero-thumb .hover-play::after{border-top-width:6px;border-bottom-width:6px;border-left-width:9px}
+.movie-card .card-title,.hero-thumb .hero-caption,.rank-item h3,.related-card h4{transition:color var(--card-hover-time) var(--card-hover-ease)}
+.rank-item,.related-card{transition:background var(--card-hover-time) var(--card-hover-ease),box-shadow var(--card-hover-time) var(--card-hover-ease);border-radius:10px}
+.related-card .copy{min-width:0}
+.movie-card:hover .poster img{transform:none}
+.movie-card:hover .hover-play{opacity:0}
+.hero-thumb:hover .hero-poster,.hero-thumb.active .hero-poster{transform:none}
+.hero-thumb.active .hero-poster{opacity:1;box-shadow:inset 0 0 0 2px var(--card-hover-accent)}
+.hero-thumb.active .hero-caption{color:var(--card-hover-accent)}
+:is(.movie-card,.hero-thumb,.rank-item,.related-card):focus-within :is(.poster,.hero-poster,.card-media){box-shadow:0 0 0 2px var(--card-hover-accent)}
+:is(.movie-card,.hero-thumb,.rank-item,.related-card):focus-within .hover-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+:is(.movie-card,.hero-thumb,.rank-item,.related-card):focus-within :is(.card-title,.hero-caption,h3,h4){color:var(--card-hover-accent)}
+@media(hover:hover) and (pointer:fine){
+ :is(.movie-card,.hero-thumb,.rank-item,.related-card):hover :is(.poster,.hero-poster,.card-media){box-shadow:0 0 0 2px var(--card-hover-accent)}
+ :is(.movie-card,.hero-thumb,.rank-item,.related-card):hover :is(.poster,.hero-poster,.card-media) img{transform:scale(1.045);filter:brightness(.82)}
+ :is(.movie-card,.hero-thumb,.rank-item,.related-card):hover .hover-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
+ :is(.movie-card,.hero-thumb,.rank-item,.related-card):hover :is(.card-title,.hero-caption,h3,h4){color:var(--card-hover-accent)}
+ .hero-thumb:hover .hero-poster{opacity:1}
+ :is(.rank-item,.related-card):hover{background:#25272d;box-shadow:0 0 0 1px #ff8b5040}
+}
+@media(prefers-reduced-motion:reduce){.movie-card *,.hero-thumb *,.rank-item,.rank-item *,.related-card,.related-card *{transition:none!important;animation:none!important}:is(.movie-card,.hero-thumb,.rank-item,.related-card):hover :is(.poster,.hero-poster,.card-media) img{transform:none}}
