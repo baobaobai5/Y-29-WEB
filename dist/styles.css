@@ -7,3 +7,6 @@
 .home-content>.catalog-section{width:100%;max-width:1400px;margin-inline:auto}
 
 .history .history-icon{display:block;width:24px;height:24px;margin:0 auto 3px}
+
+.vip{flex-shrink:0;width:56px;height:56px;padding:0;line-height:0}
+.vip img{display:block;width:100%;height:100%;object-fit:contain}
