@@ -1,0 +1,18 @@
+/* Adapted from Uiverse.io by MuhammadHasann. Compact header variant. */
+.login-pill.login-sparkle{--active:0;--black-700:hsl(0 0% 12%);--border_radius:9999px;--transition:.3s ease-in-out;position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:0 0 100px;width:100px;height:40px;padding:0 18px;border:0;border-radius:var(--border_radius);background:transparent;color:white;transform-origin:center;transform:scale(calc(1 + var(--active)*.1));transition:transform var(--transition);font-size:14px;font-weight:500;white-space:nowrap}
+.login-sparkle::before,.login-sparkle::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none}
+.login-sparkle::before{z-index:0;background:var(--black-700);box-shadow:inset 0 .5px white,inset 0 -1px 2px black,0 4px 10px -4px hsl(0 0% 0% / calc(1 - var(--active))),0 0 0 calc(var(--active)*6px) hsl(260 97% 50% / .75);transition:box-shadow var(--transition)}
+.login-sparkle::after{z-index:1;background-color:hsl(260 97% 61% / .75);background-image:radial-gradient(at 51% 89%,hsl(266 45% 74%) 0,transparent 50%),radial-gradient(at 100% 100%,hsl(266 36% 60%) 0,transparent 50%),radial-gradient(at 22% 91%,hsl(266 36% 60%) 0,transparent 50%);opacity:var(--active);transition:opacity var(--transition)}
+.login-sparkle:is(:hover,:focus-visible){--active:1;color:white}
+.login-pill.login-sparkle:active{transform:scale(1)}
+.login-sparkle .dots_border{position:absolute;inset:-1px;overflow:hidden;border-radius:inherit;z-index:-1;pointer-events:none}
+.login-sparkle .dots_border::before{content:"";position:absolute;left:50%;top:50%;width:110px;height:24px;transform-origin:0 50%;background:linear-gradient(90deg,transparent,white);animation:login-border-rotate 2s linear infinite}
+.login-sparkle .sparkle{position:relative;z-index:2;width:18px;height:18px;flex-shrink:0;overflow:visible}
+.login-sparkle .path{fill:currentColor;stroke:currentColor;stroke-width:.3px;transform-box:fill-box;transform-origin:center}
+.login-sparkle:is(:hover,:focus-visible) .path{animation:login-sparkle-pulse 1.5s linear .5s infinite}
+.login-sparkle .path:nth-child(2){animation-delay:.75s}
+.login-sparkle .text_button{position:relative;z-index:2;background-image:linear-gradient(90deg,#fff 0%,hsl(0 0% 100% / var(--active)) 120%);background-clip:text;-webkit-background-clip:text;color:transparent;line-height:20px}
+@keyframes login-border-rotate{to{transform:rotate(360deg)}}
+@keyframes login-sparkle-pulse{0%,34%,71%,100%{transform:scale(1)}17%,49%,83%{transform:scale(1.2)}}
+@media(max-width:600px){.login-pill.login-sparkle{width:82px;flex-basis:82px;height:36px;padding:0 12px;gap:6px;font-size:13px}.login-sparkle .sparkle{width:16px;height:16px}}
+@media(prefers-reduced-motion:reduce){.login-pill.login-sparkle{transform:none;transition:none}.login-sparkle::before,.login-sparkle::after{transition:none}.login-sparkle .dots_border::before,.login-sparkle:is(:hover,:focus-visible) .path{animation:none}}
