@@ -35,3 +35,6 @@ body:has(.detail-page) #footer{max-width:1400px;margin:auto;border-top:1px solid
 @media(max-width:1280px){.detail-layout{grid-template-columns:minmax(0,1fr) 268px}}
 @media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:600px){.detail-page{padding:12px 8px 32px}.detail-main{gap:16px}.detail-info,.detail-page .episodes{padding:16px}.detail-info h1{font-size:22px;line-height:32px}.detail-meta{font-size:12px;line-height:24px;padding-bottom:12px}.detail-description{gap:12px;margin-top:16px}.detail-description p{line-height:22px}.detail-description .description{line-height:24px}.detail-page .catalog-section{padding:20px 12px}.detail-page .episodes-head h2{font-size:18px}.detail-page .related{display:none}}
+
+.action-bar [data-action=dislike]{display:inline-flex;align-items:center;justify-content:center;min-width:32px}
+.dislike-icon{display:block;width:22px;height:22px;background:currentColor;mask:url("/assets/bad.svg") center/contain no-repeat;-webkit-mask:url("/assets/bad.svg") center/contain no-repeat}
