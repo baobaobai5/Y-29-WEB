@@ -1,0 +1,31 @@
+/* Playback layout aligned with the 1920px Figma design / 1400px content area. */
+.detail-page{max-width:1440px;padding:32px 20px 48px}
+.detail-main{display:flex;flex-direction:column;gap:24px;min-width:0}
+.playback-panel{border-radius:12px;overflow:hidden}
+.detail-info,.detail-page .episodes,.detail-page .catalog-section,.detail-page .related{background:var(--surface);border:1px solid var(--line);border-radius:12px;margin:0}
+.detail-info,.detail-page .episodes{padding:24px}
+.detail-info h1{font-size:26px;line-height:38px;margin:0}
+.detail-meta{line-height:36px;padding:0 0 4px;border-color:var(--line)}
+.detail-description{gap:24px;margin-top:24px;align-items:start}
+.detail-description>img{aspect-ratio:3/4;object-fit:cover}
+.detail-description>div{min-width:0}
+.detail-description p{line-height:24px;margin-bottom:12px;color:var(--muted)}
+.detail-description b{color:var(--muted)}
+.detail-description .description{line-height:26px}
+.detail-cast{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.detail-description [data-action=expand-description]{padding:0;line-height:20px}
+.detail-page .episodes-head h2{font-size:20px;line-height:24px;font-weight:500}
+.detail-page .episode-grid button{min-height:44px}
+.detail-page .catalog-section{padding:24px 16px}
+.detail-page .related{padding:20px 16px;align-self:start;min-width:0}
+.detail-page .related h3{font-size:20px;line-height:24px;font-weight:500;margin:0 0 20px}
+.detail-page .related-card{gap:12px;margin:0 0 20px;min-width:0}
+.detail-page .related-card:last-child{margin-bottom:0}
+.detail-page .related-card img{width:84px;height:116px;flex-shrink:0}
+.detail-page .related-card .copy{padding:6px 0;min-width:0}
+.detail-page .related-card h4{margin:0;font-size:14px;font-weight:400;line-height:22px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.detail-page .related-card .copy span{font-size:14px}
+body:has(.detail-page) #footer{max-width:1400px;margin:auto;border-top:1px solid var(--line)}
+@media(max-width:1280px){.detail-layout{grid-template-columns:minmax(0,1fr) 268px}}
+@media(max-width:900px){.detail-layout{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.detail-page{padding:12px 8px 32px}.detail-main{gap:16px}.detail-info,.detail-page .episodes{padding:16px}.detail-info h1{font-size:22px;line-height:32px}.detail-meta{font-size:12px;line-height:24px;padding-bottom:12px}.detail-description{gap:12px;margin-top:16px}.detail-description p{line-height:22px}.detail-description .description{line-height:24px}.detail-page .catalog-section{padding:20px 12px}.detail-page .episodes-head h2{font-size:18px}.detail-page .related{display:none}}
