@@ -16,6 +16,12 @@
 .detail-description [data-action=expand-description]{padding:0;line-height:20px}
 .detail-page .episodes-head h2{font-size:20px;line-height:24px;font-weight:500}
 .detail-page .episode-grid button{min-height:44px}
+.episode-grid:not(.expanded)>button:nth-child(n+17){display:none}
+.episodes-toggle{display:none;margin:20px auto 0;padding:10px 24px;border:1px solid var(--line);border-radius:6px;color:var(--muted);background:var(--elevated)}
+.episodes:has(.episode-grid>button:nth-child(17)) .episodes-toggle{display:block}
+.episodes-toggle:hover{color:var(--accent);border-color:var(--accent)}
+@media(max-width:900px){.episode-grid:not(.expanded)>button:nth-child(n+13){display:none}.episodes:has(.episode-grid>button:nth-child(13)) .episodes-toggle{display:block}}
+@media(max-width:600px){.episode-grid:not(.expanded)>button:nth-child(n+9){display:none}.episodes:has(.episode-grid>button:nth-child(9)) .episodes-toggle{display:block}}
 .detail-page .catalog-section{padding:24px 16px}
 .detail-page .related{padding:20px 16px;align-self:start;min-width:0}
 .detail-page .related h3{font-size:20px;line-height:24px;font-weight:500;margin:0 0 20px}
