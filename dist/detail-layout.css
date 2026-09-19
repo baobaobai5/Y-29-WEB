@@ -38,3 +38,5 @@ body:has(.detail-page) #footer{max-width:1400px;margin:auto;border-top:1px solid
 
 .action-bar [data-action=dislike]{display:inline-flex;align-items:center;justify-content:center;min-width:32px}
 .dislike-icon{display:block;width:22px;height:22px;background:currentColor;mask:url("/assets/bad.svg") center/contain no-repeat;-webkit-mask:url("/assets/bad.svg") center/contain no-repeat}
+
+.action-bar [data-action=dislike]{gap:6px}
