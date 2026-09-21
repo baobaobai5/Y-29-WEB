@@ -40,3 +40,4 @@ test.actions['reset-filters']();
 assert.equal(new URLSearchParams(location.search).get('q'),'醒来');
 assert(element('#app').innerHTML.includes('movie-card'));
 console.log('Validated search filters and query-preserving reset.');
+test.navigate('/search?q='+encodeURIComponent('醒来'));assert.equal((element('#app').innerHTML.match(/class="movie-card"/g)||[]).length,12);assert(element('#app').innerHTML.includes('共 36 条 · 每页 12 条'));test.navigate('/search?q='+encodeURIComponent('醒来')+'&page=2');assert(element('#app').innerHTML.includes('演示12'));assert(!element('#app').innerHTML.includes('演示01'));test.navigate('/search?q='+encodeURIComponent('醒来')+'&page=99');assert(element('#app').innerHTML.includes('演示35'));console.log('Validated search demo pagination: 12 items, 36 total, distinct pages and last-page bounds.');
