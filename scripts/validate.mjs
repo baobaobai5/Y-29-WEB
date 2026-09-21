@@ -15,7 +15,7 @@ await vm.runInNewContext('(async()=>{'+source+';globalThis.test={rank,periodHeat
 const test=context.test;assert(test,'Application initialization failed');assert(element('#app').innerHTML.includes('推荐影片轮播'));
 for(const path of ['/movie/list?cat_id=13','/movie/list?cat_id=14','/movie/rank','/mine/help','/mine/favorites','/mine/history']){test.navigate(path);assert(element('#app').innerHTML.length>100,path)}
 test.navigate('/search?q='+encodeURIComponent('醒来'));assert(element('#app').innerHTML.includes('醒来'));assert(element('#app').innerHTML.includes('movie-card'));
-test.navigate('/search?q='+encodeURIComponent('不会存在的片名__test'));assert(element('#app').innerHTML.includes('暂无符合条件'));
+test.navigate('/search?q='+encodeURIComponent('不会存在的片名__test'));assert(element('#app').innerHTML.includes('阿偶，没有找到您想要的内容哦~'));assert(element('#app').innerHTML.includes('/assets/search-empty.png'));
 test.navigate('/search?q='+encodeURIComponent('<img src=x onerror=alert(1)>'));assert(!element('#app').innerHTML.includes('<img src=x'));
 const movie=test.getMovies().find(m=>m.name==='醒来');assert(movie);test.navigate('/movie/detail/'+movie.slug+'-'+movie.id);assert(element('#app').innerHTML.includes('data-episode="22"'));assert(test.read('history').some(m=>m.id===movie.id));test.actions.favorite();assert(test.read('favorites').includes(movie.id));test.actions.favorite();assert(!test.read('favorites').includes(movie.id));assert(test.read('favorite-counts').find(x=>x.id===movie.id).count===368);test.actions.favorite();assert(test.read('favorites').includes(movie.id));assert(test.read('favorite-counts').find(x=>x.id===movie.id).count===369);
 test.actions.feedback();const feedback=element('#modal').innerHTML;assert((feedback.match(/name="issue"/g)||[]).length===6);assert(feedback.includes('maxlength="100"'));assert(feedback.includes('feedback-count'));
@@ -35,7 +35,7 @@ test.navigate('/search?q='+encodeURIComponent('醒来'));
 for(const key of ['cat','tag','area','language','year','status'])assert(element('#app').innerHTML.includes(`data-filter="${key}"`));
 const searchMovie=test.getMovies().find(m=>m.name==='醒来');
 test.navigate('/search?q='+encodeURIComponent('醒来')+'&cat_id=15');
-assert(element('#app').innerHTML.includes('暂无符合条件'));
+assert(element('#app').innerHTML.includes('阿偶，没有找到您想要的内容哦~'));assert(element('#app').innerHTML.includes('/assets/search-empty.png'));
 test.actions['reset-filters']();
 assert.equal(new URLSearchParams(location.search).get('q'),'醒来');
 assert(element('#app').innerHTML.includes('movie-card'));
