@@ -43,3 +43,6 @@ body:has(.detail-page) #footer{max-width:1400px;margin:auto;border-top:1px solid
 
 .action-bar [data-action=like]{display:inline-flex;align-items:center;justify-content:center;min-width:32px;gap:6px}
 .like-icon{display:block;width:22px;height:22px;background:currentColor;mask:url("/assets/good.svg") center/contain no-repeat;-webkit-mask:url("/assets/good.svg") center/contain no-repeat}
+
+.action-bar [data-action=favorite]{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.favorite-icon{display:block;width:22px;height:22px;background:currentColor;mask:url("/assets/favorites.svg") center/contain no-repeat;-webkit-mask:url("/assets/favorites.svg") center/contain no-repeat}
