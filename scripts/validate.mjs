@@ -11,7 +11,7 @@ const els=new Map();function element(key){if(!els.has(key))els.set(key,{innerHTM
 const storage=new Map(),location={pathname:'/',search:'',href:'http://localhost:5173/'};
 const setUrl=url=>{const u=new URL(url,location.href);Object.assign(location,{pathname:u.pathname,search:u.search,href:u.href})};
 const context={console,URL,URLSearchParams,Map,Set,AbortController,document:{querySelector:element,querySelectorAll:()=>[],addEventListener(){}},location,history:{pushState:(a,b,url)=>setUrl(url),replaceState:(a,b,url)=>setUrl(url)},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},fetch:async()=>({ok:true,json:async()=>structuredClone(catalog)}),matchMedia:()=>({matches:true}),setInterval:()=>1,clearInterval(){},setTimeout:()=>1,clearTimeout(){},window:{addEventListener(){},scrollTo(){}},navigator:{}};
-await vm.runInNewContext('(async()=>{'+source+';globalThis.test={navigate,actions,listing,renderListing,themePage,read,getMovies:()=>movies,getCurrent:()=>currentMovie};})()',context);
+await vm.runInNewContext('(async()=>{'+source+';globalThis.test={rank,periodHeat,getRankState:()=>rankState,navigate,actions,listing,renderListing,themePage,read,getMovies:()=>movies,getCurrent:()=>currentMovie};})()',context);
 const test=context.test;assert(test,'Application initialization failed');assert(element('#app').innerHTML.includes('推荐影片轮播'));
 for(const path of ['/movie/list?cat_id=13','/movie/list?cat_id=14','/movie/rank','/mine/help','/mine/favorites','/mine/history']){test.navigate(path);assert(element('#app').innerHTML.length>100,path)}
 test.navigate('/search?q='+encodeURIComponent('醒来'));assert(element('#app').innerHTML.includes('醒来'));assert(element('#app').innerHTML.includes('movie-card'));
@@ -24,3 +24,5 @@ for(const t of catalog.themeDetails){test.navigate('/theme-detail/'+t.id);assert
 for(const b of catalog.banners.filter(b=>b.link.startsWith('/movie/detail/'))){test.navigate(b.link);assert(!element('#app').innerHTML.includes('暂未收录'),b.name)}
 test.navigate('/movie/list?cat_id=15');assert(element('#app').innerHTML.includes('movie-card'),'Documentary category empty');
 console.log(`Validated: ${test.getMovies().length} films, ${catalog.themeDetails.length} topics, ${urls.size} local assets; search, empty state, escaping, filters, detail, episodes, favorites, history and banner routes.`);
+
+const rankViews=[];for(const period of ['year','month','week']){test.rank('电影',period);const html=element('#app').innerHTML;assert(html.includes('data-rank-period="'+period+'" aria-pressed="true"'));assert.equal(test.getRankState().period,period);rankViews.push(html)}assert.equal(new Set(rankViews).size,3);test.rank('综艺');assert.equal(test.getRankState().period,'week');assert.equal(test.getRankState().cat,'综艺');assert.equal(test.periodHeat({id:'demo',heat:'1.2w'},'year'),12000);console.log('Validated ranking period selection, category preservation, and heat units.');
