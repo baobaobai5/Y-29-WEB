@@ -114,3 +114,5 @@ function closeVolume(){const panel=$('.volume-popover');if(panel){panel.hidden=t
 document.addEventListener('click',e=>{const button=e.target.closest('[data-volume-toggle]');if(button){const panel=button.closest('.volume-control').querySelector('.volume-popover');panel.hidden=!panel.hidden;button.setAttribute('aria-expanded',String(!panel.hidden));return}if(!e.target.closest('.volume-control'))closeVolume()});
 document.addEventListener('input',e=>{if(!e.target.matches('.volume-range'))return;const player=e.target.closest('.player'),value=Number(e.target.value),video=player.querySelector('video');updateVolumeUI(player,value);if(video){video.volume=value/100;video.muted=value===0}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&e.target.closest('.volume-control')){closeVolume();$('[data-volume-toggle]').focus()}});
+
+document.addEventListener('click',e=>{const button=e.target.closest('[data-close-ad]');if(button)button.closest('.left-ad').remove()});
