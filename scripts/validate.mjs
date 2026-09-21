@@ -30,3 +30,13 @@ const rankViews=[];for(const period of ['year','month','week']){test.rank('电�
 test.rank('电影','month',1);const rankFirst=element('#app').innerHTML;assert.equal((rankFirst.match(/class="rank-item"/g)||[]).length,30);test.rank('电影','month',2);const rankSecond=element('#app').innerHTML;assert(rankSecond.includes('class="rank-number">31</span>'));assert(!rankSecond.includes('class="rank-number">1</span>'));assert.equal(test.getRankState().page,2);test.rank('电影','week');assert.equal(test.getRankState().page,1);test.rank('电影','week',999);const totalMovies=test.getMovies().filter(m=>m.category==='电影').length;assert.equal(test.getRankState().page,Math.ceil(totalMovies/30));assert.equal((element('#app').innerHTML.match(/class="rank-item"/g)||[]).length,totalMovies%30||30);console.log('Validated ranking pagination: 30 rows, continuous ranks, filter reset and last-page bounds.');
 
 test.navigate('/movie/rank?preview=empty');const rankEmpty=element('#app').innerHTML;assert(rankEmpty.includes('阿偶，没有找到您想要的内容哦~'));assert(rankEmpty.includes('/assets/rank-empty.png'));assert(!rankEmpty.includes('class="rank-item"'));assert(!rankEmpty.includes('rank-pagination'));test.navigate('/movie/rank');assert(element('#app').innerHTML.includes('class="rank-item"'));assert(!element('#app').innerHTML.includes('class="rank-empty"'));console.log('Validated ranking empty state and normal-list recovery.');
+// Search and category pages share all six filter groups; resets retain the query.
+test.navigate('/search?q='+encodeURIComponent('醒来'));
+for(const key of ['cat','tag','area','language','year','status'])assert(element('#app').innerHTML.includes(`data-filter="${key}"`));
+const searchMovie=test.getMovies().find(m=>m.name==='醒来');
+test.navigate('/search?q='+encodeURIComponent('醒来')+'&cat_id=15');
+assert(element('#app').innerHTML.includes('暂无符合条件'));
+test.actions['reset-filters']();
+assert.equal(new URLSearchParams(location.search).get('q'),'醒来');
+assert(element('#app').innerHTML.includes('movie-card'));
+console.log('Validated search filters and query-preserving reset.');
