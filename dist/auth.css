@@ -3,3 +3,10 @@
 .login-pill.is-authenticated{color:var(--accent)}.login-pill.is-authenticated .text_button{background-image:none;color:var(--accent)}.login-pill.is-authenticated .sparkle .path{color:var(--accent)}
 
 .auth-panel .auth-field-error{color:#ff625b;font-size:12px;line-height:1.6;margin:8px 0 0}.auth-panel .auth-field-error[hidden]{display:none}.auth-panel input[aria-invalid="true"]{border-color:#ff625b}
+
+.account-summary{display:flex;align-items:center;gap:20px;padding:28px;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-bottom:28px}
+.account-avatar{display:grid;place-items:center;flex-shrink:0;width:64px;height:64px;border-radius:50%;background:#ff72311a;color:var(--accent);font-size:26px;font-weight:600}
+.account-copy{flex:1;min-width:0}.account-copy h1{margin:0 0 8px;font-size:24px}.account-copy p{color:var(--muted);overflow-wrap:anywhere}
+.account-logout{padding:10px 16px;border:1px solid var(--line);border-radius:8px;background:var(--elevated);white-space:nowrap}
+.account-logout:hover{border-color:var(--accent)}
+@media(max-width:600px){.account-summary{gap:12px;padding:18px 14px;flex-wrap:wrap}.account-avatar{width:48px;height:48px;font-size:22px}.account-copy h1{font-size:20px}.account-logout{font-size:12px}}
