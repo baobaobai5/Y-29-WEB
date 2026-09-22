@@ -10,3 +10,17 @@
 .account-logout{padding:10px 16px;border:1px solid var(--line);border-radius:8px;background:var(--elevated);white-space:nowrap}
 .account-logout:hover{border-color:var(--accent)}
 @media(max-width:600px){.account-summary{gap:12px;padding:18px 14px;flex-wrap:wrap}.account-avatar{width:48px;height:48px;font-size:22px}.account-copy h1{font-size:20px}.account-logout{font-size:12px}}
+
+.personal-center{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px;max-width:1440px;padding:32px 20px 56px;align-items:start;min-height:70vh}
+.personal-sidebar{position:sticky;top:24px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px 16px}
+.personal-sidebar .account-summary{flex-direction:column;text-align:center;padding:0 0 24px;margin:0;border:0;border-bottom:1px solid var(--line);border-radius:0;gap:14px}
+.personal-sidebar .account-copy{width:100%}.personal-sidebar .account-copy h1{font-size:18px;margin-bottom:10px}.personal-sidebar .account-copy p{font-size:13px;line-height:1.7}
+.personal-sidebar .collection-tabs{display:flex;flex-direction:column;gap:8px;margin:20px 0}.personal-sidebar .collection-tabs a{padding:13px 16px;border-radius:8px;color:var(--muted)}
+.personal-sidebar .collection-tabs a:hover{background:var(--elevated);color:var(--text)}.personal-sidebar .collection-tabs a.selected{background:#ff723118;color:var(--accent);font-weight:600}
+.personal-account-action{border-top:1px solid var(--line);padding-top:20px}.personal-account-action button{width:100%}
+.personal-content{min-width:0;padding:24px;background:var(--surface);border:1px solid var(--line);border-radius:12px;min-height:540px}
+.personal-content-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.personal-content-heading h2{font-size:22px;font-weight:600}.personal-content-heading h2 span{font-size:13px;font-weight:400;color:var(--muted);margin-left:12px}.personal-content-heading .more{white-space:nowrap}
+.personal-content .movie-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:24px 16px}.personal-content .rank-empty{min-height:390px}
+@media(max-width:1100px){.personal-center{grid-template-columns:210px minmax(0,1fr);gap:20px}.personal-content .movie-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:760px){.personal-center{grid-template-columns:1fr;padding:20px 12px;gap:16px}.personal-sidebar{position:static;padding:20px}.personal-sidebar .account-summary{flex-direction:row;text-align:left;padding-bottom:16px}.personal-sidebar .collection-tabs{flex-direction:row;margin:16px 0;gap:12px}.personal-sidebar .collection-tabs a{flex:1;text-align:center}.personal-account-action{padding-top:14px}.personal-content{padding:20px 16px;min-height:420px}.personal-content .movie-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 10px}.personal-content-heading h2{font-size:18px}.personal-content .rank-empty{min-height:300px}}

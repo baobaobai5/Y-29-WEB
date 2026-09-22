@@ -9,7 +9,7 @@
     else if(path==='/movie/rank')content=block('banner')+`<div class="sk-safe">${block('actions')}<div class="sk-ranks">${repeat(9,`<div class="sk-related">${block('poster')}<div>${block()}${block('short')}${block('short')}</div></div>`)}</div></div>`;
     else if(path==='/apps')content=`<div class="sk-safe">${block('actions')}<div class="sk-apps">${repeat(80,`<div>${block('square')}${block('short')}</div>`)}</div></div>`;
     else if(path==='/mine/help')content=`<div class="sk-safe">${block('heading')}${repeat(6,block('actions'))}</div>`;
-    else if(path.startsWith('/mine/'))content=`<div class="sk-safe">${block('profile')}${block('actions')}${cards()}</div>`;
+    else if(path.startsWith('/mine/'))content=`<div class="sk-safe sk-personal"><aside>${block('profile')}${repeat(3,block('actions'))}</aside><div>${block('heading')}${cards()}</div></div>`;
     else if(path.startsWith('/theme-detail/'))content=block('banner')+`<div class="sk-safe">${block('heading')}${cards()}</div>`;
     else content=`<div class="sk-safe">${block('heading')}${block('filters')}${block('actions')}${cards(28)}</div>`;
     return `<div class="page-skeleton" role="status" aria-label="页面加载中"><span class="sr-only">页面加载中，请稍候</span><div aria-hidden="true">${content}</div></div>`;
