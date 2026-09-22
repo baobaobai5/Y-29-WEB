@@ -46,3 +46,11 @@
 .search-suggest{z-index:50;padding:20px;background:var(--surface);border-color:var(--line);box-shadow:0 16px 40px #0006;max-height:min(640px,calc(100dvh - 100px));overflow-y:auto;overscroll-behavior:contain}.search-drawer-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}.search-drawer-heading h3{margin:0}.search-form .search-drawer-heading button{width:auto;height:32px;font-size:12px;color:var(--muted);padding:0 8px}.search-history-row{display:flex;align-items:center;gap:8px;border-radius:6px}.search-history-row:hover{background:var(--elevated)}.search-history-row a{min-width:0;flex:1;display:flex;align-items:center;gap:10px;padding:10px 8px}.search-history-row a span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.search-form .search-history-row button{width:32px;height:32px;font-size:20px;color:var(--muted);border-radius:6px;flex-shrink:0}.search-form .search-history-row button:hover,.search-form .search-drawer-heading button:hover{color:var(--accent);background:var(--elevated)}.search-history-empty{color:var(--muted);font-size:13px;padding:18px 8px}.search-popular{border-top:1px solid var(--line);margin-top:16px;padding-top:18px}.search-popular h3{margin-bottom:8px}.search-popular a{padding:9px 8px;border-radius:6px}.search-popular a:hover{background:var(--elevated);color:var(--accent)}.search-rank{display:inline-block;width:26px;color:var(--accent)}
 
 .search-results-page>.movie-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:28px 20px}.search-demo-note{font-size:12px;color:var(--muted);margin:0 0 18px}.search-results-page>.pagination{align-items:center;flex-wrap:wrap}@media(max-width:600px){.search-results-page>.movie-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 12px}}
+
+/* Shared brand asset: preserve the uploaded 161:48 aspect ratio. */
+.header-inner>.logo{width:136px;display:block}
+.logo img{width:100%;height:auto;object-fit:contain}
+.footer-inner .logo{display:block;width:161px}
+.player-title img{width:96px;height:auto;object-fit:contain}
+@media(max-width:1280px){.header-inner>.logo{width:110px}}
+@media(max-width:600px){.header-inner>.logo{width:92px}.player-title img{width:72px}}
