@@ -49,4 +49,6 @@ console.log('Validated category submenu links and matching filtered results.');
 
 test.navigate('/apps');assert(element('#app').innerHTML.includes('应用中心'));assert.equal((element('#app').innerHTML.match(/class="app-tile"/g)||[]).length,80);assert(element('#header').innerHTML.indexOf('排行榜')<element('#header').innerHTML.indexOf('应用中心'));console.log('Validated application center route and 80 application entries.');
 
-for(const category of ['游戏','工具','福利','任务']){test.navigate('/apps?category='+encodeURIComponent(category));const count=(element('#app').innerHTML.match(/class="app-tile"/g)||[]).length;assert(count>0&&count<80,'Application category must filter items');}
+for(const category of ['游戏','工具','福利']){test.navigate('/apps?category='+encodeURIComponent(category));const count=(element('#app').innerHTML.match(/class="app-tile"/g)||[]).length;assert(count>0&&count<80,'Application category must filter items');}
+
+test.navigate('/apps?category='+encodeURIComponent('任务'));assert(!element('#app').innerHTML.includes('class="app-tile"'));assert(element('#app').innerHTML.includes('/assets/app-task-empty.png'));assert(element('#app').innerHTML.includes('阿偶，没有找到您想要的内容哦~'));test.navigate('/apps');assert.equal((element('#app').innerHTML.match(/class="app-tile"/g)||[]).length,80);console.log('Validated task empty state and return to recommended apps.');
