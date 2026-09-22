@@ -6,6 +6,20 @@
 /* Keep the six homepage catalog panels within the centered 1400px safe area. */
 .home-content>.catalog-section{width:100%;max-width:1400px;margin-inline:auto}
 
+/* The three featured rows share a centered 1400px content area. */
+@media(min-width:1281px){
+  .home-content>.feature-section{padding-inline:20px}
+  .feature-section>.section-title,.feature-section>.feature-track{max-width:1400px;margin-inline:auto}
+  .feature-section>.row-arrow{width:32px;z-index:2;background:#292b30cc;border-radius:8px}
+  .feature-section>.row-arrow.prev{left:0}
+  .feature-section>.row-arrow.next{right:0}
+}
+@media(min-width:1520px){
+  .feature-section>.row-arrow{background:transparent}
+  .feature-section>.row-arrow.prev{left:-32px}
+  .feature-section>.row-arrow.next{right:-32px}
+}
+
 .history .history-icon{display:block;width:24px;height:24px;margin:0 auto 3px}
 
 .vip{flex-shrink:0;width:56px;height:56px;padding:0;line-height:0}
