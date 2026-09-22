@@ -52,3 +52,7 @@ test.navigate('/apps');assert(element('#app').innerHTML.includes('应用中心')
 for(const category of ['游戏','工具','福利']){test.navigate('/apps?category='+encodeURIComponent(category));const count=(element('#app').innerHTML.match(/class="app-tile"/g)||[]).length;assert(count>0&&count<80,'Application category must filter items');}
 
 test.navigate('/apps?category='+encodeURIComponent('任务'));assert(!element('#app').innerHTML.includes('class="app-tile"'));assert(element('#app').innerHTML.includes('/assets/app-task-empty.png'));assert(element('#app').innerHTML.includes('阿偶，没有找到您想要的内容哦~'));test.navigate('/apps');assert.equal((element('#app').innerHTML.match(/class="app-tile"/g)||[]).length,80);console.log('Validated task empty state and return to recommended apps.');
+
+const skeletonSource=fs.readFileSync('dist/skeleton.js','utf8');
+for(const [path,marker] of [['/','sk-hero'],['/movie/list','sk-filters'],['/search','sk-filters'],['/movie/rank','sk-ranks'],['/movie/detail/demo','sk-detail'],['/mine/favorites','sk-profile'],['/mine/history','sk-profile'],['/mine/help','sk-heading'],['/apps','sk-apps'],['/theme-detail/demo','sk-banner']]){setUrl(path);vm.runInNewContext(skeletonSource,context);assert(element('#app').innerHTML.includes(marker),'Missing skeleton for '+path);assert(element('#app').innerHTML.includes('role="status"'));}
+console.log('Validated skeleton layouts for all page routes.');
