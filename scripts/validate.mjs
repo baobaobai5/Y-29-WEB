@@ -47,4 +47,6 @@ assert(categoryLinks.length>0,'Category submenus should expose tag filters');
 for(const url of categoryLinks){test.navigate(url);assert(element('#app').innerHTML.includes('class="movie-card"'),'Submenu filter should have matching content: '+url)}
 console.log('Validated category submenu links and matching filtered results.');
 
-test.navigate('/apps');assert(element('#app').innerHTML.includes('应用中心'));assert.equal((element('#app').innerHTML.match(/class="app-center-card"/g)||[]).length,4);assert(element('#header').innerHTML.indexOf('排行榜')<element('#header').innerHTML.indexOf('应用中心'));console.log('Validated application center route and four application entries.');
+test.navigate('/apps');assert(element('#app').innerHTML.includes('应用中心'));assert.equal((element('#app').innerHTML.match(/class="app-tile"/g)||[]).length,80);assert(element('#header').innerHTML.indexOf('排行榜')<element('#header').innerHTML.indexOf('应用中心'));console.log('Validated application center route and 80 application entries.');
+
+for(const category of ['游戏','工具','福利','任务']){test.navigate('/apps?category='+encodeURIComponent(category));const count=(element('#app').innerHTML.match(/class="app-tile"/g)||[]).length;assert(count>0&&count<80,'Application category must filter items');}

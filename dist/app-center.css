@@ -1,16 +1,16 @@
-.app-center{max-width:1440px;margin:auto;padding:48px 20px 64px;min-height:65vh}
-.app-center-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:32px}
-.app-center-heading h1{font-size:30px;margin-bottom:12px}.app-center-heading p{color:var(--muted);line-height:1.7}
-.app-center-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.app-center-card{padding:28px;background:var(--surface);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;align-items:flex-start;transition:border-color .2s,transform .2s}
-.app-center-card:hover{border-color:#ff723166;transform:translateY(-3px)}
-.app-center-icon{width:64px;height:64px;display:grid;place-items:center;border-radius:16px;background:#ff723114;color:var(--accent);margin-bottom:24px}
-.app-center-icon svg{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.app-center-card h2{font-size:20px;margin-bottom:12px}.app-center-card p{color:var(--muted);line-height:1.8;margin-bottom:24px;flex:1}
-.app-center-card .primary{font-size:14px;padding:11px 20px}.app-center-link{white-space:nowrap}.app-center-link[aria-current=page]{color:var(--accent)}
-.header-inner .search-form{min-width:140px}.header-inner .header-end{flex-shrink:0}
-@media(max-width:1280px){.app-center-link{display:none}.mobile-nav .mobile-app-center{display:block!important}}
-@media(max-width:900px){.app-center-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:600px){.app-center{padding:28px 16px}.app-center-grid{grid-template-columns:1fr;gap:16px}.app-center-card{padding:22px}.app-center-heading h1{font-size:24px}}
-@media(prefers-reduced-motion:reduce){.app-center-card{transition:none}.app-center-card:hover{transform:none}}
-.app-center-card .content-tags{margin-bottom:12px}
+.app-center{max-width:1440px;margin:auto;padding:32px 20px 56px;min-height:70vh}
+.app-category-tabs{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px}
+.app-category-tabs a{padding:9px 15px;border-radius:6px;background:var(--elevated);color:var(--muted);font-size:14px;transition:background .18s,color .18s}
+.app-category-tabs a:hover{color:var(--accent);background:#ff72311a}.app-category-tabs a.selected{background:var(--accent);color:#17181b}
+.app-center-grid{display:grid;grid-template-columns:repeat(16,minmax(0,1fr));column-gap:16px;row-gap:24px}
+.app-tile{padding:0;min-width:0;text-align:center;display:flex;flex-direction:column;gap:9px;align-items:center;border-radius:10px}
+.app-tile-icon{display:block;width:100%;aspect-ratio:1;border-radius:11px;background-image:url('/assets/app-center-reference.png');background-size:2000% 901.8182%;background-repeat:no-repeat;background-color:var(--elevated);transition:transform .2s,box-shadow .2s}
+.app-tile-name{font-size:12px;line-height:20px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text)}
+.app-tile:is(:hover,:focus-visible) .app-tile-icon{transform:translateY(-4px) scale(1.04);box-shadow:0 8px 18px #0006,0 0 0 2px var(--accent)}
+.app-tile:is(:hover,:focus-visible) .app-tile-name{color:var(--accent)}
+.app-detail-heading{display:flex;align-items:center;gap:18px;margin-bottom:24px}.app-detail-heading .app-tile-icon{width:72px;flex-shrink:0}.app-detail h2{margin:0 0 10px}.app-detail p{line-height:1.8;margin-bottom:24px}
+.app-center-link{white-space:nowrap}.app-center-link[aria-current=page]{color:var(--accent)}.header-inner .search-form{min-width:140px}.header-inner .header-end{flex-shrink:0}
+@media(max-width:1280px){.app-center-link{display:none}.mobile-nav .mobile-app-center{display:block!important}.app-center-grid{grid-template-columns:repeat(12,minmax(0,1fr))}}
+@media(max-width:900px){.app-center-grid{grid-template-columns:repeat(8,minmax(0,1fr));gap:24px 14px}}
+@media(max-width:600px){.app-center{padding:24px 16px}.app-center-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 18px}.app-category-tabs{gap:8px;margin-bottom:28px}.app-category-tabs a{padding:8px 12px}.app-tile-icon{border-radius:12px}}
+@media(prefers-reduced-motion:reduce){.app-tile-icon{transition:none}.app-tile:is(:hover,:focus-visible) .app-tile-icon{transform:none}}
