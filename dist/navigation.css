@@ -11,3 +11,17 @@
 @media(max-width:1100px){.hero-nav{grid-template-columns:260px minmax(0,1fr);column-gap:20px;padding:20px}.hero-nav .categories{padding-right:20px;gap:8px}.hero-nav .theme-links{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.hero-nav{width:calc(100% - 24px);grid-template-columns:minmax(0,1fr);margin:12px auto 20px;padding:16px;gap:14px;border-radius:12px}.hero-nav .categories{grid-column:1;grid-row:1;grid-template-columns:repeat(6,minmax(0,1fr));border-right:0;border-bottom:1px solid #3a3c42;padding:0 0 16px;gap:6px}.hero-nav .categories a{font-size:12px;min-height:38px;border-radius:6px}.hero-nav .theme-label{grid-column:1;grid-row:2}.hero-nav .theme-links{grid-column:1;grid-row:3;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.hero-nav .theme-links a{padding:9px 10px;font-size:12px}}
 @media(prefers-reduced-motion:reduce){.hero-nav a{transition:none}}
+
+/* Category flyouts reuse the listing page's available content tags. */
+.nav-dropdown .dropdown{overflow:visible}
+.nav-category-link{display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:6px}
+.nav-category-link>span{color:var(--muted);font-size:16px}
+.nav-category:hover>.nav-category-link,.nav-category:focus-within>.nav-category-link{color:var(--accent);background:#ff723114}
+.nav-submenu{display:none;position:absolute;left:100%;top:0;width:340px;padding:20px;background:#26272bf5;border:1px solid #45464a;border-radius:10px;box-shadow:0 12px 30px #0005;backdrop-filter:blur(16px)}
+.nav-category:hover>.nav-submenu,.nav-category:focus-within>.nav-submenu{display:block}
+.dropdown:has(.nav-category:hover) .nav-category:not(:hover)>.nav-submenu{display:none}
+.nav-submenu-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--line);font-size:16px;font-weight:600}
+.nav-submenu-heading>a{padding:0;font-size:12px;font-weight:400;color:var(--muted)}
+.nav-submenu-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;max-height:300px;overflow:auto;scrollbar-width:thin;scrollbar-color:#666 #292b2f}
+.nav-submenu-links>a{padding:10px 8px;border-radius:6px;font-size:13px;line-height:1.5}
+.nav-submenu-links>a:hover,.nav-submenu-links>a:focus-visible{color:var(--accent);background:#ff723114}

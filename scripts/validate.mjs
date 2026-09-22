@@ -41,3 +41,8 @@ assert.equal(new URLSearchParams(location.search).get('q'),'醒来');
 assert(element('#app').innerHTML.includes('movie-card'));
 console.log('Validated search filters and query-preserving reset.');
 test.navigate('/search?q='+encodeURIComponent('醒来'));assert.equal((element('#app').innerHTML.match(/class="movie-card"/g)||[]).length,28);assert(element('#app').innerHTML.includes('共 36 条 · 每页 28 条'));test.navigate('/search?q='+encodeURIComponent('醒来')+'&page=2');assert.equal((element('#app').innerHTML.match(/class="movie-card"/g)||[]).length,8);assert(element('#app').innerHTML.includes('演示28'));assert(!element('#app').innerHTML.includes('演示01'));test.navigate('/search?q='+encodeURIComponent('醒来')+'&page=99');assert(element('#app').innerHTML.includes('演示35'));console.log('Validated search pagination: 28 items, 36 total, distinct pages and last-page bounds.');
+
+const categoryLinks=[...element('#header').innerHTML.matchAll(/href="([^\"]*&amp;tag=[^\"]*)"/g)].map(m=>m[1].replaceAll('&amp;','&'));
+assert(categoryLinks.length>0,'Category submenus should expose tag filters');
+for(const url of categoryLinks){test.navigate(url);assert(element('#app').innerHTML.includes('class="movie-card"'),'Submenu filter should have matching content: '+url)}
+console.log('Validated category submenu links and matching filtered results.');
