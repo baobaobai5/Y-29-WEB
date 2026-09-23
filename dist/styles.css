@@ -61,3 +61,4 @@
 .home-ad-card{display:block;position:relative;flex:0 0 200px;width:200px;height:112px;overflow:hidden;border-radius:8px;scroll-snap-align:start;background:var(--elevated)}
 .home-ad-card img{width:200px;height:112px;object-fit:cover;transition:filter .2s}.home-ad-card:hover img{filter:brightness(1.12)}.home-ad-card>span{position:absolute;bottom:5px;right:6px;padding:1px 4px;border-radius:3px;background:#0009;color:#ddd;font-size:10px}.home-ad-card:focus-visible{outline-offset:-3px}
 @media(max-width:600px){.home-ad-row{margin-bottom:18px}.home-ad-track{gap:12px}}
+.home-ad-card{padding:0;border:1px solid #ffffff20;text-align:left}.home-ad-controls>span{color:#c6bba6;letter-spacing:.5px}.home-ad-card>span{background:#111d;color:#fff;border:1px solid #ffffff40}
