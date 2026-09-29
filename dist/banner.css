@@ -38,3 +38,7 @@
 .hero .play-button{margin-top:24px;min-height:50px;padding:12px 25px;gap:10px;background:var(--accent);border:1px solid #ffffff16;border-radius:10px;font-size:17px;font-weight:600;color:#17181b;box-shadow:0 6px 20px #0003;backdrop-filter:none}.hero .play-button>span{font-size:18px}.hero .play-button:hover{background:#ff8b54;color:#17181b;transform:translateY(-2px)}
 @media(max-width:1100px){.hero-copy{width:70%;max-width:620px;bottom:235px}.hero-copy h1{font-size:32px}.hero .play-button{margin-top:18px}}
 @media(max-width:600px){.hero-copy{width:calc(100% - 40px);max-width:none;bottom:217px}.hero-copy h1{font-size:26px;margin-bottom:12px}.hero-facts{font-size:12px;gap:9px;margin-bottom:10px}.hero-facts>span:first-child{font-size:15px}.hero-facts>span+span{padding-left:9px}.hero-copy .hero-meta{font-size:12px;gap:8px;margin-bottom:9px}.hero-copy .hero-tagline{font-size:13px;line-height:1.7}.hero .play-button{min-height:44px;padding:10px 20px;font-size:15px;margin-top:16px}}
+
+/* Give the hero copy a comfortable inset without crowding the poster rail. */
+@media(min-width:1101px){.hero-copy{left:clamp(64px,6vw,120px);width:calc(45% - clamp(64px,6vw,120px) - 48px)}}
+@media(min-width:601px) and (max-width:1100px){.hero-copy{left:40px}}
