@@ -52,3 +52,15 @@
 .hero-nav .theme-label{display:flex;align-items:center;gap:7px}
 .theme-label-icon{width:24px;height:24px;object-fit:contain;flex-shrink:0}
 @media(max-width:600px){.theme-label-icon{width:20px;height:20px}}
+
+/* Wide, grouped navigation: secondary destinations visible in one panel. */
+.nav-dropdown{position:static}
+.nav-dropdown .mega-dropdown,.nav-dropdown:is(:hover,:focus-within) .mega-dropdown,.nav-dropdown .mega-dropdown.open{display:block;position:absolute;top:100%;left:0;right:0;width:100%;padding:0;border:0;border-top:1px solid #ffffff0b;border-bottom:1px solid #ffffff17;border-radius:0;background:#1e2024;box-shadow:0 18px 32px #0005;backdrop-filter:none;max-height:calc(100dvh - 90px);overflow:auto}
+.mega-grid{max-width:1440px;margin:0 auto;padding:32px 20px 36px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 56px}
+.mega-heading{display:flex;align-items:center;gap:10px;color:#a7a9b1;font-size:13px;font-weight:500;line-height:22px;margin-bottom:12px;padding:0!important}
+.mega-heading>span{opacity:0;transition:opacity .16s}.mega-heading:hover>span{opacity:1}
+.mega-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 14px}
+.mega-links>a{display:block;padding:7px 0!important;min-height:34px;border-radius:0;font-size:15px;line-height:22px;color:#eceef2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .16s}
+.mega-links>a:hover,.mega-heading:hover{color:var(--accent);background:transparent!important}
+.nav-dropdown .mega-dropdown.dismissed{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(5px)}
+@media(min-width:1281px) and (max-width:1500px){.mega-grid{gap:28px 32px;padding-inline:24px}}
