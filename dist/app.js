@@ -24,6 +24,7 @@ function card(m){return `<article class="movie-card"><a href="${movieUrl(m)}" ar
 function section(s,i,feature=false){return `<section class="${feature?'feature-section':'catalog-section'}"><div class="section-title">${s.icon?`<img src="${s.icon}" alt="">`:''}<h2>${esc(s.name)}</h2>${feature?'':`<a class="more" href="${listUrl(s.items[0]?.category)}">更多 ›</a>`}</div><div class="${feature?'feature-track':'movie-grid'}" id="row-${i}">${s.items.map(card).join('')}</div>${feature?`<button class="row-arrow prev" data-row="${i}" data-step="-1" aria-label="上一张">‹</button><button class="row-arrow next" data-row="${i}" data-step="1" aria-label="下一张">›</button>`:''}</section>`}
 function home(){header(true);const b=catalog.banners[heroIndex];$('#app').innerHTML=`<section class="hero" aria-label="推荐影片轮播"><a id="hero-link" href="${bannerLink(b)}"><img class="hero-image" src="${b.content}" alt="${esc(b.name)}" fetchpriority="high"></a><div class="hero-copy" aria-live="off">${heroCopy(b)}</div><div class="hero-picker"><button class="hero-arrow" data-hero-step="-1" aria-label="上一部推荐影片">‹</button><div class="hero-thumbs" aria-label="选择推荐影片">${catalog.banners.map((x,i)=>`<button class="hero-thumb ${i===heroIndex?'active':''}" aria-pressed="${i===heroIndex}" aria-label="切换到${esc(x.name)}" data-slide="${i}"><span class="hero-poster"><img src="${bannerMovie(x)?.img||x.content}" alt="" loading="lazy"></span><span class="hero-caption">${esc(x.name)}</span></button>`).join('')}</div><button class="hero-arrow" data-hero-step="1" aria-label="下一部推荐影片">›</button></div></section><nav class="hero-nav"><div class="categories">${catalog.categories.map(c=>`<a href="${listUrl(c.name)}">${c.name}</a>`).join('')}<a href="${listUrl()}">更多</a></div><span class="theme-label">▦ 推荐主题</span><div class="theme-links">${catalog.themes.map(t=>`<a href="/theme-detail/${t.id}">${esc(t.name)} ›</a>`).join('')}</div></nav><div class="mobile-only mobile-categories">${catalog.categories.map(c=>`<a href="${listUrl(c.name)}">${c.name}</a>`).join('')}</div><div class="home-content">${[...catalog.home_recommends,...catalog.sections].map((s,i,all)=>section(s,i,i<catalog.home_recommends.length)+(i<all.length-1?homeAdRow(i):'')).join('')}</div>`;
 startHomeAds();
+setTimeout(showHomeEntryAd,350);
 if(!matchMedia('(prefers-reduced-motion: reduce)').matches)heroTimer=setInterval(()=>{const hero=$('.hero');if(hero&&!hero.matches(':hover')&&!hero.contains(document.activeElement)&&!document.hidden)slide(heroIndex+1)},7000);
 }
 function bannerLink(b){if(b.link.startsWith('/movie/detail/')){const m=movies.find(m=>b.link.endsWith(m.id));if(m)return movieUrl(m);return '/search?q='+encodeURIComponent(b.name)}return b.link.startsWith('/movie/list')?b.link:listUrl('动漫')}
@@ -169,3 +170,15 @@ function listingCards(items,withAd){const cards=items.map(card);if(withAd&&items
 function syncNavigationScroll(){document.body?.classList.toggle("page-scrolled",window.scrollY>24)}
 window.addEventListener("scroll",syncNavigationScroll,{passive:true});
 syncNavigationScroll();
+
+function showHomeEntryAd(){
+ if(location.pathname!=='/'||document.querySelector('dialog[open]')||showHomeEntryAd.seen)return;
+ try{if(sessionStorage.getItem('home-entry-ad-seen'))return}catch{}
+ const ad=document.createElement('dialog');ad.className='home-entry-ad';ad.setAttribute('aria-label','首页推广广告');
+ ad.innerHTML='<img src="/assets/ads/list-audio.svg" width="300" height="400" alt="无线听觉，随时进入好状态"><span class="entry-ad-label">广告</span><button type="button" class="entry-ad-close" aria-label="关闭广告" autofocus>×</button>';
+ document.body.append(ad);
+ ad.querySelector('button').addEventListener('click',()=>ad.close());
+ ad.addEventListener('click',e=>{if(e.target===ad){const r=ad.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)ad.close()}});
+ ad.addEventListener('close',()=>ad.remove(),{once:true});ad.showModal();showHomeEntryAd.seen=true;
+ try{sessionStorage.setItem('home-entry-ad-seen','1')}catch{}
+}
