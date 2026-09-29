@@ -173,12 +173,10 @@ syncNavigationScroll();
 
 function showHomeEntryAd(){
  if(location.pathname!=='/'||document.querySelector('dialog[open]')||showHomeEntryAd.seen)return;
- try{if(sessionStorage.getItem('home-entry-ad-seen'))return}catch{}
  const ad=document.createElement('dialog');ad.className='home-entry-ad';ad.setAttribute('aria-label','首页推广广告');
- ad.innerHTML='<img src="/assets/ads/list-audio.svg" width="300" height="400" alt="无线听觉，随时进入好状态"><span class="entry-ad-label">广告</span><button type="button" class="entry-ad-close" aria-label="关闭广告" autofocus>×</button>';
+ ad.innerHTML='<div class="entry-ad-art"><img src="/assets/ads/list-audio.svg" width="300" height="400" alt="无线听觉，随时进入好状态"><span class="entry-ad-label">广告</span></div><button type="button" class="entry-ad-close" aria-label="关闭广告" autofocus>×</button>';
  document.body.append(ad);
  ad.querySelector('button').addEventListener('click',()=>ad.close());
  ad.addEventListener('click',e=>{if(e.target===ad){const r=ad.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)ad.close()}});
  ad.addEventListener('close',()=>ad.remove(),{once:true});ad.showModal();showHomeEntryAd.seen=true;
- try{sessionStorage.setItem('home-entry-ad-seen','1')}catch{}
 }
