@@ -1,0 +1,7 @@
+.git
+.openai
+.DS_Store
+node_modules
+PC
+.env*
+*.tar.gz

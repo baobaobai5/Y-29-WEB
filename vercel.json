@@ -1,0 +1,14 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "npm run check",
+  "installCommand": "",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/movie/:path*", "destination": "/index.html" },
+    { "source": "/mine/:path*", "destination": "/index.html" },
+    { "source": "/theme-detail/:path*", "destination": "/index.html" },
+    { "source": "/search", "destination": "/index.html" },
+    { "source": "/apps", "destination": "/index.html" }
+  ]
+}

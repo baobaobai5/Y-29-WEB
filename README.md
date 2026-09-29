@@ -37,3 +37,21 @@ npm run dev
 - `scripts/*reference.py`、`scripts/enrich-catalog.py`：公开资料整理脚本，不复制远端脚本、登录凭据或追踪代码。
 
 `npm run check` 已检查 457 条影片记录、7 个专题、492 张本地图片，以及搜索、空态、输入转义、主要路由、选集、收藏与浏览记录。搜索 WebMCP 工具已在支持该接口的浏览器验证。没有执行全页面像素差异比对或 Lighthouse，不宣称达到像素级 1:1。
+
+## Vercel 部署
+
+`vercel.json` 将 `dist/` 作为静态输出目录，以 `npm run check` 作为发布前校验，无需安装第三方依赖或配置环境变量。详情、列表、搜索、专题和个人页面的直接访问由 rewrites 返回 `index.html`；缺失的静态资源保持 404。不要将 `npm start` 作为云端常驻服务运行。
+
+在已登录 Vercel CLI 的环境执行：
+
+```sh
+npx vercel --prod
+```
+
+部署风险审计：
+- 已处理：静态输出目录未声明、深层路由刷新 404、发布前缺少校验门禁。
+- 功能边界：登录、支付、远程播放、反馈后端未接入；收藏与历史仅存当前浏览器。
+- 性能：静态资源约 58 MB，建议后续按访问数据优化大图和动图。
+- 自动发布：本地 CLI 发布不会自动将配置提交至 GitHub；接通 Git 集成前须提交上述配置。
+
+配置依据：https://vercel.com/docs/project-configuration
