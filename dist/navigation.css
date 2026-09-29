@@ -48,3 +48,7 @@
 .nav-dropdown:is(:hover,:focus-within) .nav-trigger{color:#ff925e}
 .nav-dropdown:is(:hover,:focus-within) .nav-trigger-arrow{transform:rotate(180deg)}
 @media(prefers-reduced-motion:reduce){.nav-trigger-arrow{transition:none}}
+
+.hero-nav .theme-label{display:flex;align-items:center;gap:7px}
+.theme-label-icon{width:24px;height:24px;object-fit:contain;flex-shrink:0}
+@media(max-width:600px){.theme-label-icon{width:20px;height:20px}}
