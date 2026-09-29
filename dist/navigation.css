@@ -64,3 +64,16 @@
 .mega-links>a:hover,.mega-heading:hover{color:var(--accent);background:transparent!important}
 .nav-dropdown .mega-dropdown.dismissed{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(5px)}
 @media(min-width:1281px) and (max-width:1500px){.mega-grid{gap:28px 32px;padding-inline:24px}}
+
+/* Balanced category overview with a dedicated browse column. */
+.mega-grid{grid-template-columns:190px repeat(3,minmax(0,1fr));gap:28px 36px;padding:28px 20px 30px}
+.mega-group:first-child{grid-row:span 2;border-right:1px solid #ffffff12;padding-right:28px}
+.mega-group:first-child .mega-links{grid-template-columns:1fr;gap:3px}
+.mega-heading{font-size:15px;font-weight:600;color:#f1f2f4;margin-bottom:12px;min-height:24px}
+.mega-heading>span{font-size:13px;color:var(--accent)}
+.mega-links{gap:4px 12px}
+.mega-links>a{padding:6px 10px!important;margin-left:-10px;border-radius:6px;font-size:14px;line-height:22px;min-height:34px;color:#b8bac2}
+.mega-links>a:hover,.mega-links>a:focus-visible{color:#ff925e;background:#ff723112!important}
+.mega-group:first-child .mega-links>a{color:#e4e5e9}
+.mega-group:first-child .mega-links>a:hover{color:#ff925e}
+@media(min-width:1281px) and (max-width:1500px){.mega-grid{grid-template-columns:160px repeat(3,minmax(0,1fr));gap:24px 28px;padding:26px 24px}.mega-group:first-child{padding-right:22px}}
