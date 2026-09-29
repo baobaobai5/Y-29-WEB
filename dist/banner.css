@@ -65,3 +65,10 @@ body:has(.home-entry-ad[open]){overflow:hidden}
  .hero-caption{font-size:14px;padding-top:9px;line-height:1.5}
  .hero-arrow{flex-basis:24px;height:48px;font-size:40px;margin-bottom:30px}
 }
+
+/* Share the poster picker's centered 1400px safe area. */
+@media(min-width:1101px){
+ .hero{--hero-safe-inset:max(24px,calc((100% - 1400px)/2));--hero-picker-width:min(740px,44%)}
+ .hero-copy{left:var(--hero-safe-inset);width:calc(100% - var(--hero-safe-inset) - var(--hero-safe-inset) - var(--hero-picker-width) - 48px);max-width:640px}
+ .hero-picker{right:var(--hero-safe-inset);width:var(--hero-picker-width)}
+}
