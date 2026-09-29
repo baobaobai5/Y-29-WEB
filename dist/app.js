@@ -165,3 +165,7 @@ document.addEventListener('click',e=>{const button=e.target.closest('[data-ad-st
 document.addEventListener('keydown',e=>{if(!e.target.matches('.home-ad-track')||!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();moveHomeAds(e.target.closest('.home-ad-row'),e.key==='ArrowRight'?1:-1)});
 
 function listingCards(items,withAd){const cards=items.map(card);if(withAd&&items.length)cards.splice(Math.min(7,cards.length),0,'<article class="listing-ad-card" aria-label="商业广告"><button type="button" class="listing-ad-cover" data-commercial-ad="audio" aria-label="查看音频好物广告"><img src="/assets/ads/list-audio.svg" alt="无线听觉，探索音频好物" width="300" height="400" loading="lazy"><span>广告</span></button><span class="card-title">探索音频好物</span><p class="card-meta">商业推广</p></article>');return cards.join('')}
+
+function syncNavigationScroll(){document.body?.classList.toggle("page-scrolled",window.scrollY>24)}
+window.addEventListener("scroll",syncNavigationScroll,{passive:true});
+syncNavigationScroll();
