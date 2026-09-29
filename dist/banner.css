@@ -108,3 +108,6 @@ body:has(.home-entry-ad[open]){overflow:hidden}
 .other-themes{max-width:1400px;margin-inline:auto}
 .other-theme-track{width:100%;max-width:100%;gap:20px;padding:3px 0;scroll-padding-inline:0}
 .other-theme-track>.other-theme-card{flex:0 0 250px;width:250px;height:140px;scroll-snap-align:start}
+
+.theme-pagination{align-items:center}
+.theme-pagination>span{align-self:center;line-height:20px}
