@@ -1,0 +1,38 @@
+/* Shared interaction language without changing card dimensions or layout. */
+:root{--card-ease:cubic-bezier(.2,.7,.2,1);--card-ring:#ff723170;--card-shadow:0 8px 22px #0005}
+:is(.rank-item,.related-card,.history-entry,.other-theme-card,.home-ad-card,.listing-ad-card>a){transition:background .2s,border-color .2s,box-shadow .2s,color .2s}
+:is(.movie-card .poster img,.other-theme-card>img,.home-ad-card img,.hero-poster img){transition:transform .28s var(--card-ease),filter .22s;transform-origin:center}
+:is(.movie-card .card-title,.rank-item h3,.related-card h4,.history-entry-title,.other-theme-card strong,.app-tile-name,.hero-caption){transition:color .2s}
+.related-card{border-radius:8px}
+.app-tile .app-tile-icon{transition:transform .22s var(--card-ease),box-shadow .22s}
+:is(.rank-item,.related-card,.history-entry,.other-theme-card,.home-ad-card,.app-tile,.hero-thumb):focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+:is(.other-theme-card,.home-ad-card):focus-visible{outline-offset:-3px}
+@media(hover:hover) and (pointer:fine){
+ .movie-card:hover>.poster,.movie-card:hover>a>.poster,.movie-card:focus-within>a>.poster{box-shadow:0 0 0 1px var(--card-ring),var(--card-shadow)}
+ .movie-card:is(:hover,:focus-within)>a>.poster img{transform:scale(1.025)}
+ .movie-card:is(:hover,:focus-within)>a>.card-title{color:var(--accent)}
+ :is(.rank-item,.related-card,.history-entry):is(:hover,:focus-visible){background:#ffffff06;box-shadow:inset 0 0 0 1px #ffffff18;color:var(--text)}
+ .rank-item:is(:hover,:focus-visible) h3,.related-card:is(:hover,:focus-visible) h4,.history-entry:is(:hover,:focus-visible) .history-entry-title{color:var(--accent)}
+ :is(.other-theme-card,.home-ad-card):is(:hover,:focus-visible){box-shadow:inset 0 0 0 1px var(--card-ring),var(--card-shadow)}
+ .other-theme-card:is(:hover,:focus-visible)>img,.home-ad-card:is(:hover,:focus-visible) img{transform:scale(1.025);filter:brightness(1.04)}
+ .other-theme-card:is(:hover,:focus-visible) strong{color:var(--accent)}
+ .app-tile:is(:hover,:focus-visible) .app-tile-icon{transform:translateY(-2px);box-shadow:0 0 0 1px var(--card-ring),var(--card-shadow)}
+ .app-tile:is(:hover,:focus-visible) .app-tile-name{color:var(--accent)}
+ .hero-thumb:is(:hover,:focus-visible) .hero-poster{transform:none;opacity:1;box-shadow:0 0 0 1px var(--card-ring)}
+ .hero-thumb:is(:hover,:focus-visible) .hero-poster img{transform:scale(1.025)}
+ .hero-thumb:is(:hover,:focus-visible) .hero-caption{color:var(--accent)}
+ .hero-thumb.active .hero-poster{transform:none;box-shadow:0 0 0 2px #ffffffc9}
+ .listing-ad-card:is(:hover,:focus-within) .poster{box-shadow:0 0 0 1px var(--card-ring),var(--card-shadow)}
+ .listing-ad-card:is(:hover,:focus-within) .card-title{color:var(--accent)}
+ .movie-card .hover-info{border-color:#ffffff24;box-shadow:0 16px 36px #0008}
+ .hover-info-copy>div button:is(:hover,:focus-visible){background:#ff723118;color:var(--accent)}
+}
+@media(hover:none){
+ .app-tile:hover .app-tile-icon,.hero-thumb:hover .hero-poster{transform:none}
+ .other-theme-card:hover>img{transform:none}
+ :is(.movie-card,.rank-item,.related-card,.history-entry,.other-theme-card,.home-ad-card,.app-tile):active{opacity:.86}
+}
+@media(prefers-reduced-motion:reduce){
+ :is(.movie-card,.rank-item,.related-card,.history-entry,.other-theme-card,.home-ad-card,.app-tile,.hero-thumb) *{transition:none!important;animation:none!important}
+ :is(.movie-card .poster img,.other-theme-card>img,.home-ad-card img,.app-tile .app-tile-icon,.hero-poster,.hero-poster img){transform:none!important}
+}
