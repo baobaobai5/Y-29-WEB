@@ -26,3 +26,6 @@
  .listing-page .sort-options button{padding:8px 13px}
 }
 @media(prefers-reduced-motion:reduce){.listing-page .filter-options button{transition:none}}
+
+/* Desktop categories: 31 films + one existing ad = four rows of eight. */
+@media(min-width:1024px){.listing-page:not(.search-results-page)>.movie-grid{grid-template-columns:repeat(8,minmax(0,1fr));gap:24px 16px}}

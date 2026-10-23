@@ -1,0 +1,95 @@
+/* Button motion inspired by Itskrish01: https://uiverse.io/Itskrish01/fuzzy-warthog-48 (MIT). */
+.ai-show-menu{position:relative;flex-shrink:0}
+.ai-show-trigger{position:relative;isolation:isolate;display:block;overflow:hidden;padding:1px;border-radius:999px;background:#44434a;color:#f4f4f5;height:40px;font-size:14px;font-weight:600;white-space:nowrap;transition:box-shadow .2s}
+.ai-show-trigger::before{content:"";position:absolute;z-index:-1;width:70px;height:60px;top:-10px;left:-15px;background:linear-gradient(135deg,#7a69f9,#f26378,#f5833f);filter:blur(12px);animation:ai-border-glow 8s ease-in-out infinite alternate}
+.ai-show-face{display:flex;align-items:center;justify-content:center;gap:8px;height:38px;padding:0 13px;border-radius:inherit;background:#18191de8}
+.ai-show-star{flex-shrink:0;transition:transform .5s ease}
+.ai-show-chevron{transform:rotate(-90deg);transition:transform .2s}
+.ai-show-trigger:hover,.ai-show-trigger[aria-expanded=true]{color:#fff;box-shadow:0 0 16px #f2637824}
+.ai-show-trigger:hover .ai-show-star{transform:rotate(360deg) scale(1.08)}
+.ai-show-trigger[aria-expanded=true] .ai-show-chevron{transform:rotate(90deg)}
+.ai-show-drawer{position:absolute;z-index:85;right:0;top:calc(100% + 10px);width:176px;padding:7px;background:#222429;border:1px solid #393c43;border-radius:13px;box-shadow:0 18px 48px #0009;animation:ai-drawer-in .18s ease-out}
+.ai-show-drawer[hidden]{display:none}
+.ai-show-drawer::before{content:"";position:absolute;bottom:100%;left:0;right:0;height:12px}
+.ai-show-option{display:flex;align-items:center;gap:11px;width:160px;height:46px;padding:8px 10px;border-radius:8px;background:transparent;color:var(--text);font-size:13px;line-height:20px;text-align:left;transition:background .18s,color .18s}
+.ai-show-option-icon{position:relative;display:block;flex-shrink:0;width:30px;height:30px}
+.ai-show-option-icon img{position:absolute;left:-5px;top:-5px;width:40px;height:40px;object-fit:contain}
+.ai-show-option:hover,.ai-show-option:focus-visible{background:#ff723112;color:var(--accent)}
+.ai-show-trigger:focus-visible,.ai-show-option:focus-visible{outline:2px solid #ff9c6d;outline-offset:2px}
+@keyframes ai-border-glow{to{transform:translateX(125px) scale(1.3)}}
+@keyframes ai-drawer-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+@media(min-width:1024px) and (max-width:1279px){.header-inner{gap:12px}.header-end{gap:12px}.ai-show-face{gap:6px;padding:0 10px}}
+@media(max-width:767px){.ai-show-face{padding:0 10px;gap:6px}.ai-show-trigger{font-size:12px}.ai-show-drawer{position:fixed;top:72px;right:16px;width:176px}}
+@media(prefers-reduced-motion:reduce){.ai-show-trigger::before,.ai-show-drawer{animation:none}.ai-show-menu *{transition:none!important}}
+@media(min-width:1024px) and (max-width:1100px){.header-inner .search-form{min-width:120px}.header-inner .header-end{gap:10px}}
+
+/* AI entry notices share Y-29 dialog tokens and use the native modal top layer. */
+#modal:has(.ai-entry-content){width:560px;max-width:calc(100vw - 48px);padding:32px;border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--text);box-shadow:0 24px 80px #0008;overflow:visible}
+#modal:has(.ai-entry-content)::backdrop{background:rgb(0 0 0 / .64)}
+.ai-entry-content h2{margin:0 48px 16px 0;font-size:24px;line-height:34px;font-weight:600}
+.ai-entry-content p{margin:0;color:var(--text-secondary,#b8bac2);font-size:14px;line-height:24px}
+#modal:has(.ai-entry-content) .close-modal{display:flex;align-items:center;justify-content:center;position:absolute;top:20px;right:20px;width:40px;height:40px;padding:0;border:1px solid transparent;border-radius:999px;background:var(--elevated);color:var(--text-secondary,#b8bac2);font-size:26px;line-height:1;transition:background .18s,color .18s}
+#modal:has(.ai-entry-content) .close-modal:hover{background:#ff72311a;color:var(--accent)}
+#modal:has(.ai-entry-content) .close-modal:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media(prefers-reduced-motion:no-preference){#modal[open]:has(.ai-entry-content){animation:ai-entry-in .18s ease-out}}
+@keyframes ai-entry-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:767px){#modal:has(.ai-entry-content){max-width:calc(100vw - 32px);padding:24px}.ai-entry-content h2{font-size:22px;line-height:32px}#modal:has(.ai-entry-content) .close-modal{top:16px;right:16px}}
+#modal:has(.ai-exchange){padding:32px;width:560px;max-height:calc(100dvh - 48px);overflow:auto}
+.ai-exchange-heading{display:flex;gap:12px;align-items:center;padding-right:28px;margin-bottom:28px}
+.ai-exchange-symbol{width:40px;height:40px;display:grid;place-items:center;flex-shrink:0;background:#ff723114;border:1px solid #ff723140;border-radius:10px}
+.ai-exchange-symbol img{width:18px;height:18px}
+.ai-exchange-heading h2{font-size:22px;line-height:30px;margin:0 0 4px}
+.ai-exchange-heading p{font-size:13px;line-height:20px}
+.ai-exchange label{display:flex;justify-content:space-between;font-size:14px;line-height:22px;margin-bottom:8px;color:var(--text-secondary)}
+.ai-exchange label span{font-size:12px;color:var(--accent)}
+.ai-amount-field{height:52px;display:flex;gap:12px;align-items:center;border:1px solid var(--line);background:var(--elevated);border-radius:8px;padding:0 16px}
+.ai-amount-field:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px #ff72311a}
+.ai-amount-field:has([aria-invalid=true]){border-color:#ff8d85}
+.ai-amount-field input{min-width:0;width:100%;background:transparent;border:0;outline:0;color:var(--text);font:inherit;font-size:16px;line-height:24px;padding:0;margin:0;height:48px}
+.ai-amount-field input::placeholder{color:#a0a1a6}
+.ai-coin-symbol{display:inline-grid;place-items:center;width:20px;height:20px;flex-shrink:0;border:1px solid var(--accent);border-radius:50%;color:var(--accent);font-size:12px}
+#ai-exchange-rate{display:flex;gap:8px;margin-top:8px;font-size:13px;line-height:20px}
+#ai-exchange-rate strong{color:var(--accent);font-weight:500}
+#ai-exchange-error{min-height:20px;color:#ff8d85;font-size:12px;line-height:20px;margin:4px 0 12px}
+.ai-exchange-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ai-exchange-stat{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--bg)}
+.ai-exchange-stat>span{display:flex;gap:6px;align-items:center;font-size:12px;color:var(--text-secondary)}
+.ai-exchange-stat img,.ai-exchange-stat .ai-coin-symbol{width:14px;height:14px;font-size:9px}
+.ai-exchange-stat p{margin:8px 0 0;display:flex;gap:8px;align-items:baseline}
+.ai-exchange-stat strong{font-size:24px;line-height:30px;font-variant-numeric:tabular-nums;color:var(--text)}
+.ai-exchange-stat small{font-size:12px;color:var(--text-secondary)}
+.ai-exchange-account{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 20px;font-size:12px;color:var(--text-secondary)}
+.ai-exchange-account button{height:36px;display:flex;gap:8px;align-items:center;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:var(--elevated);color:var(--text)}
+.ai-exchange-account img{width:15px;height:15px}
+#ai-recharge-note{font-size:13px;margin:0 0 16px;color:var(--text-secondary)}
+.ai-exchange-actions{border-top:1px solid var(--line);padding-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ai-exchange-actions button,.ai-exchange-success button{display:flex;align-items:center;justify-content:center;gap:8px;height:46px;border-radius:8px;border:1px solid var(--line);color:var(--text);font-size:14px;font-weight:600;white-space:nowrap}
+.ai-exchange-actions .ai-exchange-submit,.ai-exchange-success button{background:var(--accent);border-color:var(--accent);color:#17181b}
+.ai-exchange-submit img{width:16px;height:16px;filter:brightness(0)}
+.ai-exchange-actions .ai-exchange-submit:disabled{background:var(--elevated);border-color:var(--line);color:#a0a1a6;cursor:not-allowed}
+.ai-exchange-submit:disabled img{filter:none}
+.ai-exchange button:not(:disabled):hover{filter:brightness(1.12)}
+.ai-exchange button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ai-exchange-success{text-align:center;padding:8px 0}
+.ai-exchange-success>img{width:32px;height:32px;margin:0 auto 16px}
+.ai-exchange-success h2{margin:0 0 16px}
+.ai-exchange-success p{margin:8px 0}
+.ai-exchange-success strong{color:var(--accent)}
+.ai-exchange-success small{display:block;color:var(--text-secondary);margin-top:12px;font-size:12px}
+.ai-exchange-success button{width:100%;margin-top:24px}
+@media(max-width:767px){#modal:has(.ai-exchange){padding:24px}.ai-exchange-account{align-items:flex-start}.ai-exchange-heading h2{font-size:20px}}
+
+.ai-exchange-hints{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:8px 0 24px;min-height:20px}
+.ai-exchange-hints #ai-exchange-rate{flex-shrink:0;margin:0}
+.ai-exchange-hints #ai-exchange-error{margin:0;min-height:20px;text-align:right;line-height:20px}
+@media(max-width:767px){.ai-exchange-hints{gap:8px}}
+
+.ai-exchange-account{justify-content:flex-end}
+
+.ai-amount-field>.ai-coin-symbol{line-height:1;align-self:center}
+
+.ai-exchange-stat:has([data-ai-recharge]){position:relative;padding-right:90px}
+.ai-exchange-stat .ai-exchange-account{position:absolute;right:12px;top:50%;transform:translateY(-50%);margin:0}
+.ai-exchange-stats{margin-bottom:20px}
+.ai-exchange-stat p{flex-wrap:wrap;overflow-wrap:anywhere}
+@media(max-width:767px){.ai-exchange-stat:has([data-ai-recharge]){padding-right:16px}.ai-exchange-stat .ai-exchange-account{position:static;transform:none;margin-top:12px}}

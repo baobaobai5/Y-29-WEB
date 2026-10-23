@@ -1,0 +1,115 @@
+{
+  "project": "万象影视",
+  "date": "2026-10-20",
+  "mode": "Preserve existing brand and information architecture",
+  "design_dials": {
+    "DESIGN_VARIANCE": 3,
+    "MOTION_INTENSITY": 3,
+    "VISUAL_DENSITY": 6
+  },
+  "desktop_rules": {
+    "content_max_width_px": 1400,
+    "outer_gutter_px": 24,
+    "header_height_px": 72,
+    "type_scale_px": [
+      12,
+      14,
+      16,
+      20,
+      24,
+      28,
+      40
+    ],
+    "minimum_control_height_px": 36,
+    "pagination_control_px": 40,
+    "input_height_px": 48,
+    "radii_px": {
+      "control": 8,
+      "panel": 12,
+      "modal": 16,
+      "pill": 999
+    },
+    "hover_lift_px": 4,
+    "motion_ms": 220,
+    "theme": "Existing dark brand retained",
+    "accent": "#ff7231",
+    "focus": "#ff9c6d"
+  },
+  "reviewed_routes": [
+    "/",
+    "/movie/list",
+    "/search",
+    "/movie/rank",
+    "/apps",
+    "/mine/favorites",
+    "/movie/detail/jiaofeng-4646422fcc05735a",
+    "/theme-detail/6a69a1aef97971786100cbb4"
+  ],
+  "viewport_checks": [
+    [
+      1024,
+      768
+    ],
+    [
+      1280,
+      800
+    ],
+    [
+      1440,
+      900
+    ],
+    [
+      1920,
+      1080
+    ]
+  ],
+  "fixed": [
+    "PC navigation restored at 1024-1280px",
+    "Header kept on one line at 72px",
+    "Search keyboard focus visible",
+    "Login text fully legible and restrained hover",
+    "Sticky personal sidebar clears fixed navigation",
+    "Modal and history drawer constrained to viewport",
+    "Unified control dimensions and typography",
+    "Hidden previews no longer create horizontal scrolling",
+    "1024px hero title clears header",
+    "Desktop floating ads only shown where outer gutters can contain them",
+    "Logo dimensions reserved",
+    "First row of non-home cards loaded eagerly",
+    "Sort selected color contrast corrected",
+    "Footer heading order corrected",
+    "Card accessible names use content",
+    "Navigation click no longer closes a menu opened by hover",
+    "Reduced motion override covers animations"
+  ],
+  "preserved": [
+    "User-provided logos and icons",
+    "1400px safe area",
+    "Poster 3:4 ratio",
+    "Search 7-column and topic 8-column layouts",
+    "Empty-state text",
+    "Existing routes and navigation labels",
+    "Existing mock content"
+  ],
+  "scope_notes": [
+    "Landing-page-only skill rules are not applied to repeated film grids, ratings, pagination or player UI",
+    "Dark theme retained to match explicit prior system-style requirements",
+    "Existing icons preserved; no icon library migration",
+    "No new image generation: user assets retained",
+    "Not an exhaustive WCAG certification",
+    "No production deployment performed"
+  ],
+  "remaining": [
+    "Lighthouse performance below target; large media loading needs a separate optimization pass",
+    "Production network Core Web Vitals and full manual accessibility testing not certified"
+  ],
+  "lighthouse": {
+    "route": "/movie/list",
+    "preset": "desktop",
+    "performance": 75.0,
+    "accessibility": 100,
+    "LCP": "10.1 s",
+    "CLS": "0",
+    "TBT": "0 ms"
+  }
+}

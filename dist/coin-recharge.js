@@ -1,0 +1,19 @@
+// Preview tiers and records match the Y-31 PC reference; no payment is submitted.
+const tiers=Array.from({length:8},(_,i)=>i===4?{coins:680,price:52,original:68}:{coins:60,price:5,original:6});
+const asset=name=>`/assets/coin-recharge/${name}.svg`;
+const coin=()=>'<img class="wallet-coin-icon" src="/assets/coin-recharge/tier-coin.png" width="28" height="28" alt="">';
+export function showCoinRecharge({openModal,wallet,onBack}){
+ let tab='recharge',selected=4,payment='微信支付';
+ const dialog=document.querySelector('#modal');
+ function render(focus){
+  const tier=tiers[selected];
+  const records=Array.from({length:6},(_,i)=>`<tr><td><strong>${i?'西游记':'充值'}</strong><small>${i?'购买视频：西游记':'充值：10元'}</small></td><td class="record-amount">${i?'-100':'+100'}金币</td><td><time datetime="2024-06-12T14:32:08">2024-06-12 14:32:08</time></td></tr>`).join('');
+  openModal(`<div class="ai-entry-content coin-recharge"><aside class="recharge-sidebar"><nav aria-label="金币中心导航">${[['recharge','金币充值','nav-recharge'],['records','金币记录','nav-records']].map(([key,label,icon])=>`<button data-recharge-tab="${key}" ${tab===key?'aria-current="page"':''}><span class="recharge-nav-icon" style="mask-image:url('${asset(icon)}')" aria-hidden="true"></span>${label}</button>`).join('')}</nav><div class="recharge-wallet"><span>当前金币余额</span><strong>${coin()}${wallet.coins.toLocaleString('zh-CN')}</strong></div><button class="recharge-back" data-recharge-back><img src="/assets/player-back.svg" alt="" width="16" height="16">返回积分兑换</button></aside><section class="recharge-main"><header class="recharge-heading"><h2 id="recharge-title">${tab==='recharge'?'金币充值':'金币记录'}</h2><p id="recharge-description">${tab==='recharge'?'充值越多，优惠越多，赠币最高可达 25%':'查看充值、消费及奖励记录'}</p></header><div class="recharge-content">${tab==='recharge'?`<fieldset><legend>选择金币档位</legend><div class="recharge-tiers">${tiers.map((t,i)=>`<label class="recharge-tier"><input type="radio" name="coin-tier" value="${i}" ${i===selected?'checked':''}><span class="tier-value"><img class="tier-coin-icon" src="/assets/coin-recharge/tier-coin.png" width="28" height="28" alt=""><b>${t.coins}</b></span><span class="tier-price"><strong>¥${t.price}</strong><del>¥${t.original}</del></span></label>`).join('')}</div></fieldset><fieldset class="recharge-payment"><legend>支付方式</legend><div>${['微信支付','支付宝'].map((name,i)=>`<label><input type="radio" name="coin-payment" value="${name}" ${name===payment?'checked':''}><img src="${asset(i?'alipay':'wechat')}" width="20" height="20" alt="">${name}</label>`).join('')}</div></fieldset><button class="recharge-pay" data-recharge-pay>立即支付 ¥${tier.price}</button><p class="recharge-notice" role="status" hidden>充值支付服务暂未接入，暂时无法完成充值，请稍后再试。</p>`:`<div class="coin-records-scroll" tabindex="0" role="region" aria-label="金币记录，可上下滚动"><table><thead><tr><th scope="col">名称</th><th scope="col">金币</th><th scope="col">支付时间</th></tr></thead><tbody>${records}</tbody></table></div>`}</div></section></div>`);
+  dialog.setAttribute('aria-labelledby','recharge-title');dialog.setAttribute('aria-describedby','recharge-description');
+  const root=dialog.querySelector('.coin-recharge');
+  root.addEventListener('click',e=>{const btn=e.target.closest('button');if(!btn)return;if(btn.hasAttribute('data-recharge-back'))onBack();else if(btn.dataset.rechargeTab){tab=btn.dataset.rechargeTab;render(`[data-recharge-tab="${tab}"]`)}else if(btn.hasAttribute('data-recharge-pay'))root.querySelector('.recharge-notice').hidden=false;});
+  root.addEventListener('change',e=>{if(e.target.name==='coin-tier')selected=Number(e.target.value);else if(e.target.name==='coin-payment')payment=e.target.value;else return;root.querySelector('.recharge-pay').textContent=`立即支付 ¥${tiers[selected].price}`;root.querySelector('.recharge-notice').hidden=true;});
+  (dialog.querySelector(focus||'.recharge-tier input:checked')||dialog.querySelector('.close-modal')).focus();
+ }
+ render();
+}

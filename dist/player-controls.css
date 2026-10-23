@@ -4,3 +4,10 @@
 @media(max-width:600px){.transport{padding:35px 8px 10px}.transport-row{gap:5px;flex-wrap:wrap}.transport .round{width:30px;height:30px;font-size:16px}.transport .seek-range{order:-1;flex-basis:100%;margin:0}.jump-row{margin-bottom:6px}.jump-group button{padding:5px 10px;font-size:12px}.remaining{margin-left:auto;font-size:12px}.transport-speed{font-size:12px;width:52px}}
 
 .volume-control{position:relative;flex-shrink:0}.volume-popover{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%);width:38px;height:120px;padding:10px 0 12px;display:flex;flex-direction:column;align-items:center;gap:10px;background:rgba(9,9,5,.94);border-radius:4px;box-shadow:0 6px 18px #0005}.volume-popover[hidden]{display:none}.volume-value{font-size:12px;line-height:16px;font-variant-numeric:tabular-nums;color:white}.volume-range{appearance:none;writing-mode:vertical-lr;direction:rtl;width:18px;height:74px;margin:0;background:transparent;cursor:pointer;flex-shrink:0}.volume-range::-webkit-slider-runnable-track{width:2px;border-radius:2px;background:linear-gradient(to top,var(--accent) var(--volume),#4c4b43 var(--volume))}.volume-range::-webkit-slider-thumb{appearance:none;width:10px;height:10px;border-radius:50%;background:var(--accent);margin-left:-4px}.volume-range::-moz-range-track{width:2px;background:#4c4b43}.volume-range::-moz-range-progress{width:2px;background:var(--accent)}.volume-range::-moz-range-thumb{width:10px;height:10px;border:0;border-radius:50%;background:var(--accent)}
+
+/* Player back control: 24px artwork within a 40px pointer target. */
+.player-title .player-back{display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;pointer-events:auto;transition:background-color .18s ease}
+.player-title .player-back img{width:24px;height:24px;object-fit:contain}
+.player-title .player-back:hover{background:rgba(255,255,255,.1)}
+.player-title .player-back:hover img{filter:brightness(1.45)}
+@media(prefers-reduced-motion:reduce){.player-title .player-back{transition:none}}

@@ -111,3 +111,7 @@ body:has(.home-entry-ad[open]){overflow:hidden}
 
 .theme-pagination{align-items:center}
 .theme-pagination>span{align-self:center;line-height:20px}
+
+/* Compact topic hero keeps the title and description inside the banner. */
+.theme-hero{height:clamp(230px,22vw,360px);min-height:0}
+@media(max-width:600px){.theme-hero{height:210px}}

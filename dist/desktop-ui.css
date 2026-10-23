@@ -1,0 +1,88 @@
+/* PC UI contract: 1400px content, 24px gutters, 72px navigation.
+   Layers: content 0, previews 15, utilities 20, navigation 30, toast 60,
+   dialogs use the browser top layer. Brand remains intentionally dark. */
+:root{--content-width:1400px;--page-gutter:24px;--header-height:72px;--radius-control:8px;--radius-panel:12px;--radius-modal:16px;--text-secondary:#b8bac2;--focus-color:#ff9c6d}
+html{scroll-padding-top:calc(var(--header-height) + 16px)}
+body{line-height:1.5}
+button{white-space:nowrap}
+:where(button,a,input,textarea,select):focus-visible{outline:2px solid var(--focus-color);outline-offset:3px}
+.search-form:focus-within{box-shadow:0 0 0 2px var(--focus-color)}
+.search-form input{min-width:0}
+dialog{max-height:calc(100dvh - 32px);overflow:auto;overscroll-behavior:contain}
+dialog textarea::placeholder{color:var(--text-secondary);opacity:1}
+.close-modal{width:32px;height:32px;display:grid;place-items:center;padding:0;border-radius:50%}
+.pagination{align-items:center;flex-wrap:wrap;gap:12px}
+.pagination button{min-width:40px;min-height:40px;border-radius:var(--radius-control);line-height:20px}
+.pagination button:disabled{opacity:1;color:#858892;background:#222429;cursor:not-allowed}
+.pagination button:not(:disabled):not(.selected):hover{background:#363940;color:var(--text)}
+.personal-sidebar{top:calc(var(--header-height) + 24px);max-height:calc(100dvh - var(--header-height) - 48px);overflow:auto}
+.history-drawer{z-index:1;max-height:calc(100dvh - var(--header-height) - 24px);display:flex;flex-direction:column}
+.history-scroll{min-height:0;flex:1}.history-drawer-head,.history-drawer-footer{flex-shrink:0}
+.history-drawer[hidden]{display:none}
+.detail-description b{color:var(--text-secondary)}
+.hover-info-copy>div a{color:#17181b}
+.share-platform.copy-link{color:#17181b}
+@media(min-width:1024px){
+ #header,.header-inner{height:var(--header-height)}
+ .header-inner{max-width:1448px;padding-inline:24px;gap:24px;flex-wrap:nowrap}
+ .header-inner>.logo{width:132px}
+ .nav-dropdown{display:flex;margin-left:16px;flex-shrink:0}
+ .rank-link,.app-center-link{display:block;font-size:14px}
+ .mobile-nav{display:none}
+ .vip{display:block;flex-shrink:0}
+ .header-inner .search-form{flex:1;min-width:160px;max-width:492px;margin-left:0}
+ .search-form input{height:44px;font-size:14px}
+ .header-end{gap:20px}.history-menu{display:block}.history{display:block;min-width:40px}
+ .mega-grid{max-width:1448px;padding-inline:24px}
+ .page,.app-center{max-width:1448px;padding-inline:24px}
+ .page.listing-page{max-width:var(--content-width);padding-inline:0}
+ .personal-center{max-width:1448px;padding-inline:24px}
+ .hero{height:clamp(540px,48vw,760px);max-height:100dvh}
+ .hero-nav .theme-links{max-height:140px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:3px}
+ .hero-nav .categories{display:grid}
+ .section-title{margin-bottom:24px}.section-title h2{font-size:24px;line-height:1.4}
+ .catalog-section h2,.detail-page .episodes-head h2,.detail-page .related h3{font-size:20px;line-height:1.4}
+ .card-title{font-size:16px;line-height:24px;padding-top:8px}
+ .filter-panel,.personal-content,.personal-sidebar{border-radius:var(--radius-panel)}
+ .listing-page .filter-label,.listing-page .filter-options button,.listing-page .sort-options button{font-size:14px}
+ .listing-page .results-bar p,.feedback-intro{font-size:14px}
+ .feedback-choice-body small,.feedback-local-note,.detail-ad-label,.home-ad-card>span,.hero-meta .content-tag{font-size:12px}
+ .hero-meta .content-tag{color:var(--text-secondary)}
+ .filter-options button,.rank-tabs button,.rank-periods button,.app-category-tabs a{min-height:36px;border-radius:var(--radius-control)}
+ .rank-number,.rank-item img{flex-shrink:0}
+ .rank-item h3{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:24px}
+ .movie-card>a{display:block}
+ .feature-track{padding-top:6px;margin-top:-6px}
+}
+@media(min-width:1024px) and (max-width:1279px){
+ .header-inner{gap:16px}.header-inner>.logo{width:112px}.nav-dropdown{margin-left:0}
+ .header-end{gap:12px}.vip img{width:44px;height:44px}
+ .mega-grid{grid-template-columns:130px repeat(3,minmax(0,1fr));gap:24px}
+ .mega-group:first-child{padding-right:16px}
+ .personal-content .movie-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+/* Floating promotions require an actual outer gutter, never cover the films. */
+@media(min-width:1024px) and (max-width:1615px){.left-ads{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Off-screen hidden hover previews must not create a document scrollbar. */
+body{overflow-x:clip}
+@media(min-width:1024px) and (max-width:1100px){.hero{height:640px}.hero-copy{top:100px;bottom:auto;left:24px;width:calc(100% - 48px);max-width:620px}.hero-copy h1{font-size:28px;margin-bottom:12px}.hero-copy .hero-tagline{line-height:1.6}}
+.listing-page .sort-options button.selected{color:#ff925e}
+.footer-inner h2{font-size:16px;color:var(--text);margin-bottom:20px}
+.logo img{width:100%;height:auto}
+/* Hidden preview geometry must not extend the scrollable page. */
+.movie-card:not(:hover):not(:focus-within) .hover-info{display:none}
+
+/* Compact ranking badges, shared across every ranking period and page. */
+.rank-item .rank-number{display:flex;align-items:center;justify-content:center;width:35px;flex:0 0 35px;font-style:normal}
+.rank-badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 3px;border-radius:4px;background:#999;color:#fff;font-size:12px;font-weight:700;line-height:20px;font-style:normal;font-variant-numeric:tabular-nums}
+.rank-badge--1{background:#e52427}.rank-badge--2{background:#e76c27}.rank-badge--3{background:#ffc400}
+
+/* Header utility actions share icon, label and hit-area geometry. */
+.header-end .app-download{flex-shrink:0;white-space:nowrap;min-width:60px;padding:1px 6px;font-size:12px;line-height:18px;text-align:center}.header-end .app-download .history-icon{width:32px;height:32px;margin:0 auto;object-fit:contain;filter:brightness(0) invert(1)}
+@media(max-width:1023px){.header-end .app-download{display:none}}
+
+/* Membership entry is temporarily hidden; retain its implementation for restoration. */
+#header .vip[hidden]{display:none}
+
+.movie-card .poster .card-hot-badge{position:absolute;top:8px;left:8px;width:56px;height:23px;object-fit:contain;z-index:2;pointer-events:none;transform:none;transition:none}
